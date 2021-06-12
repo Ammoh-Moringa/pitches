@@ -1,47 +1,54 @@
 import os
 
 class Config:
-    """
-    This is the parent class which will have the general configurations
-    """
-    UPLOADED_PHOTOS_DEST = "app/static/photos"
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+    '''
+    General configuration parent class
+    '''
 
-    #email stuff
-    MAIL_SERVER = "smtp.gmail.com"
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("EMAIL_USERNAME")
-    MAIL_PASSWORD  = os.environ.get("EMAIL_PASSWORD")
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://marvin:marvin24@localhost/perfect_pitch'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
-class DevConfig(Config):
-    """
-    This is the class which we will use to set the configurations during development stage of the app
-    Args:
-        COnfig - this is the parent config class from which we inherit its properties
-    """
-    DEBUG = True
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
+    
+    #  email configurations
+    # MAIL_SERVER = 'smtp.googlemail.com'
+    # MAIL_PORT = 587
+    # MAIL_USE_TLS = True
+    # MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    # MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+
+     # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 class ProdConfig(Config):
-    """
-    This is the class which we will use to set the configurations during production stage of the app
+    '''
+    Production  configuration child class
+
     Args:
-        Config - this is the parent config class from which we inherit its properties
-    """
+        Config: The parent configuration class with General configuration settings
+    '''
+
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     pass
+
 
 class TestConfig(Config):
-    """
-    This is the class which we will use to set the configurations during testing stage of the app
-    Args:
-        Config - this is the parent config class from which we inherit its properties
-    """
-
+    
     pass
 
+
+class DevConfig(Config):
+    '''
+    Development  configuration child class
+
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Ammoh@localhost/pitches'
+    DEBUG = True
+
 config_options = {
-    "test": TestConfig,
-    "production": ProdConfig,
-    "development": DevConfig
-}
+    'development':DevConfig,
+    'production':ProdConfig,
+    'test':TestConfig
+    }
