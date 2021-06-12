@@ -21,26 +21,25 @@ def index():
 
 
 #Route for adding a new pitch
-@main.route('/category/new-pitch/<int:id>', methods=['GET', 'POST'])
+@main.route('/pitch/newpitch',methods= ['POST','GET'])
 @login_required
-def new_pitch(id):
-    """
-    Function to check Pitches form and fetch data from the fields 
-    """
-    
-    form = PitchForm()
-    category = PitchCategory.query.filter_by(id=id).first()
+def newPitch():
+    pitch = PitchForm()
+    if pitch.validate_on_submit():
+        title = pitch.pitch_title.data
+        category = pitch.pitch_category.data
+        yourPitch = pitch.pitch_comment.data
 
-    if category is None:
-        abort(404)
+        #update pitch instance
 
-    if form.validate_on_submit():
-        content = form.content.data
-        new_pitch= Pitch(content=content, category_id = category.id, user_id = current_user.id)
-        new_pitch.save_pitch()
-        return redirect(url_for('.category', id=category.id))
+        newPitch = Pitch(pitch_title = title,pitch_category = category,pitch_comment = yourPitch,user= current_user)
 
-    return render_template('new_pitch.html', pitch_form=form, category=category)
+        #save pitch
+        newPitch.save_pitch()
+        return redirect(url_for('.index'))
+
+    title = 'NEW PITCH'
+    return render_template('new_pitch.html',title = title,pitchform = pitch)  
 
 
 @main.route('/categories/<int:id>')
@@ -116,6 +115,12 @@ def post_comment(id):
     return render_template('post_comment.html', comment_form = form, title = title)
 
 
+@main.route('/category/interview',methods= ['GET'])
+def displayInterviewCategory():
+    interviewPitches = Pitch.get_pitches('interview')
+    return render_template('interviews.html',interviewPitches = interviewPitches)
+
+
 #Routes upvoting/downvoting pitches
 @main.route('/pitch/upvote/<int:id>&<int:vote_type>')
 @login_required
@@ -128,6 +133,7 @@ def upvote(id,vote_type):
     print(f'The new vote is {votes}')
     to_str=f'{vote_type}:{current_user.id}:{id}'
     print(f'The current vote is {to_str}')
+    
 
     if not votes:
         new_vote = Votes(vote=vote_type, user_id=current_user.id, pitches_id=id)

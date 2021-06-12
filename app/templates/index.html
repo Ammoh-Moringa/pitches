@@ -6,7 +6,7 @@
     <div class="container text-white text-center">
       <h2 class="card-title h1-responsive font-bold">Welcome to Pitch Places</h2>
       <p class="lead">Well,this is where you read other peoples pitches or create your own. Also you can post a comment and like or dislike the viewed pitches.</p>
-      <a class="btn btn-outline-white btn-md" href=""><i class="fas fa-clone left"></i>Create Pitch</a>
+      <a class="btn btn-outline-white btn-md" href="{{url_for('main.newPitch')}}"><i class="fas fa-clone left"></i>Create Pitch</a>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
             <h3 class="">Interviews Pitches</h3>
             <hr>
             <p>A summary of how one will conduct themselves and answer questions during an interview </p>
-                <a href="" class="btn btn-default btn-center -center">
+                <a href="{{url_for('main.displayInterviewCategory')}}" class="btn btn-default btn-center -center">
                 View Pitch</a>
         </div>
     </div>
