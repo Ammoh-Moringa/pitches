@@ -73,24 +73,39 @@ def new_category():
 
 
 #view single pitch alongside its comments
-@main.route('/view-pitch/<int:id>', methods=['GET', 'POST'])
+@main.route('/comment/<int:id>',methods= ['POST','GET'])
 @login_required
-def view_pitch(id):
-    """
-    Function the returns a single pitch for a comment to be added
-    """
-    all_category = PitchCategory.get_categories()
-    pitches = Pitch.query.get(id)
-    # pitches = Pitch.query.filter_by(id=id).all()
+def viewPitch(id):
+    onepitch = Pitch.getPitchId(id)
+    comments = Comments.get_comments(id)
 
-    if pitches is None:
-        abort(404)
-    #
-    comment = Comments.get_comments(id)
-    count_likes = Votes.query.filter_by(pitches_id=id, vote=1).all()
-    count_dislikes = Votes.query.filter_by(pitches_id=id, vote=2).all()
-    return render_template('view-pitch.html', pitches = pitches, comment = comment, count_likes=len(count_likes), count_dislikes=len(count_dislikes), category_id = id, categories=all_category)
+    if request.args.get("like"):
+        onepitch.likes = onepitch.likes + 1
 
+        db.session.add(onepitch)
+        db.session.commit()
+
+        return redirect("/comment/{pitch_id}".format(pitch_id=category.id))
+
+    elif request.args.get("dislike"):
+        onepitch.dislikes = onepitch.dislikes + 1
+
+        db.session.add(onepitch)
+        db.session.commit()
+
+        return redirect("/comment/{pitch_id}".format(pitch_id=category.id))
+
+    commentForm = CommentForm()
+    if commentForm.validate_on_submit():
+        opinion = commentForm.opinion.data
+
+        newComment = Comments(opinion = opinion,user = current_user,pitches_id= id)
+
+        newComment.save_comment()
+
+    return render_template('comments.html',commentForm = commentForm,comments = comments,pitch = onepitch)
+
+    
 #adding a comment
 @main.route('/write_comment/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -119,6 +134,23 @@ def post_comment(id):
 def displayInterviewCategory():
     interviewPitches = Pitch.get_pitches('interview')
     return render_template('interviews.html',interviewPitches = interviewPitches)
+
+
+@main.route('/category/product',methods= ['POST','GET'])
+def displayProductCategory():
+    productPitches = Pitch.get_pitches('product')
+    return render_template('product.html',productPitches = productPitches)
+
+@main.route('/category/promotion',methods= ['POST','GET'])
+def displayPromotionCategory():
+    promotionPitches = Pitch.get_pitches('promotion')
+    return render_template('promotion.html',promotionPitches = promotionPitches)
+
+@main.route('/category/pickup',methods= ['POST','GET'])
+def displayPickupCategory():
+    pickupPitches = Pitch.get_pitches('pickup')
+    return render_template('pickup.html',pickupPitches = pickupPitches)
+
 
 
 #Routes upvoting/downvoting pitches

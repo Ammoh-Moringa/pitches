@@ -42,6 +42,8 @@
 {%endmacro%}
 
 
+
+
 {% macro displaySpecificPitch(specific_pitch_list) %}
 {% for comment in specific_pitch_list %}
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
@@ -57,3 +59,13 @@
 <a class="dropdown-item" href="{{url_for('.category',id=category.id)}}">{{category.name|upper}} </a>
 {% endfor %}
 {% endmacro %}
+
+
+{%macro displayComments(comments_list)%}
+    {%for comment in comments_list%}
+        <div class="col-md-12">
+            <p>{{comment.opinion}}</p>
+            <h5>By : {{comment.user.username}}</h5>
+        </div>
+    {%endfor%}
+{%endmacro%}
