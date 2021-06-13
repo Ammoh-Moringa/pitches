@@ -4,82 +4,87 @@
 <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
 <div class="container" style="font-family: 'Shadows Into Light', cursive;font-size:30px;">
-<div class="">
-  <div class="jumbotron jumbotron-fluid" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);"">
-    <div class="container text-white text-center">
-      <h2 class="card-title h1-responsive font-bold">Welcome to Pitch Places</h2>
-      <p class="lead">Well,this is where you read other peoples pitches or create your own. Also you can post a comment and like or dislike the viewed pitches.</p>
-      <a class="btn btn-outline-white btn-md" href="{{url_for('main.newPitch')}}"><i class="fas fa-clone left"></i>Create Pitch</a>
+  <div class="">
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('../static/blue.jpeg');background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;">
+      <div class="container text-white text-center">
+        <h2 class="card-title h1-responsive font-bold" style="color:goldenrod; font-size:50px;">Welcome to Pitches</h2>
+        <p class="lead" style="color:goldenrod; font-size:40px;">Pitches is where you can read other people's pitches or
+          generate your own. Also you can Add a comment and Upvote or Downvote the viewed pitches.</p>
+        <a class="btn btn-outline-white btn-md" href="{{url_for('main.newPitch')}}" style="font-size:30px; color:red"><i
+            class="fas fa-clone left"></i>Generate a Pitch</a>
+      </div>
     </div>
-  </div>
 
-<h3 class="text-center text-uppercase text-bold">Categories</h3>
-<hr>
+    <h3 class="text-center text-uppercase text-bold">Categories</h3>
+    <hr>
 
-  <div class="row m-3">
-    <div class="col-sm">
-      <div class=" card col-sm pt-2">
-        <div class="well well-lg p-3" style="text-align: center;">
+    <div class="row m-3">
+      <div class="col-sm">
+        <div class=" card col-sm pt-2">
+          <div class="well well-lg p-3" style="text-align: center;">
             <h3 class="">Interviews Pitches</h3>
             <hr>
             <p>A summary of how one will conduct themselves and answer questions during an interview </p>
-                <a href="{{url_for('main.displayInterviewCategory')}}" class="btn btn-default btn-center -center">
-                View Pitch</a>
+            <a href="{{url_for('main.displayInterviewCategory')}}" class="btn btn-default btn-center -center">
+              View Pitch</a>
+          </div>
         </div>
-    </div>
-    </div>
-    <div class="col-sm">
-      <div class=" card col-sm mt-2">
-        <div class="well well-lg p-3" style="text-align: center;">
+      </div>
+      <div class="col-sm">
+        <div class=" card col-sm mt-2">
+          <div class="well well-lg p-3" style="text-align: center;">
             <h3>Promotion Pitches</h3>
             <hr>
             <p>A summary of how promotional pitches should look like.How they are structured. </p>
-                <a href="{{url_for('main.displayPromotionCategory')}}" class="btn btn-default btn-center -center">
-                View Pitch</a>
+            <a href="{{url_for('main.displayPromotionCategory')}}" class="btn btn-default btn-center -center">
+              View Pitch</a>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
-  </div>
 
-  <div class="row m-3">
-    <div class="col-sm">
-      <div class=" card col-sm mt-2">
-        <div class="well well-lg p-3" style="text-align: center;">
+    <div class="row m-3">
+      <div class="col-sm">
+        <div class=" card col-sm mt-2">
+          <div class="well well-lg p-3" style="text-align: center;">
             <h3>Product Pitches</h3>
             <hr>
             <p>A summary of what should be included in a product pitch </p>
-                <a href="{{url_for('main.displayProductCategory')}}" class="btn btn-default btn-center -center">
-                View Pitch</a>
+            <a href="{{url_for('main.displayProductCategory')}}" class="btn btn-default btn-center -center">
+              View Pitch</a>
+          </div>
         </div>
+
       </div>
-      
-    </div>
-    <div class="col-sm">
-      <div class=" card col-sm mt-2">
-        <div class="well well-lg p-3" style="text-align: center;">
+      <div class="col-sm">
+        <div class=" card col-sm mt-2">
+          <div class="well well-lg p-3" style="text-align: center;">
             <h3>Pickup Lines Pitches</h3>
             <hr>
             <p> Some of the pickup lines that should be included in your pitch</p>
-                <a href="{{url_for('main.displayPickupCategory')}}" class="btn btn-default btn-center -center">
-                View Pitch</a>
+            <a href="{{url_for('main.displayPickupCategory')}}" class="btn btn-default btn-center -center">
+              View Pitch</a>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue-grey darken-3">
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <a href="">pitches</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
   </div>
-
-  <!-- Footer -->
-<footer class="page-footer font-small blue-grey darken-3">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2021 Copyright:
-    <a href="">pitches</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-
-</div>
 </div>
 
 {% endblock %}
