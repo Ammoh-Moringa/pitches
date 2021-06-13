@@ -7,20 +7,20 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"> Pitches </a>
+          <a class="navbar-brand" href="/" style="background-color: goldenrod;"> Pitches </a>
       </div>
       <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
+              <li><a href="/" style="background-color:goldenrod">Home</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
               {% if current_user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="/">{{current_user.username.capitalize()}}</a>
             </li>
-              <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+              <li><a href="{{url_for('auth.logout')}}" style="background-color: goldenrod;">Sign out</a></li>
               {% else %}
-              <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+              <li><a href="{{url_for('auth.login')}}" style="background-color: goldenrod;">Sign in</a></li>
               {%endif%}
           </ul>
       </div>
