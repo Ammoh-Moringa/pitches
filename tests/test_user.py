@@ -12,12 +12,11 @@ class UserModelTest(unittest.TestCase):
         Set up method that will run before every Test
         """
 
-        self.new_user = User(username='cjjhvghxdf', password = 'potatopeel420')
+        self.new_user = User(username='Pogba', password = 'Amos')
 
 
     def test_password_setter(self):
         self.assertTrue(self.new_user.password_hash is not None)
-
 
     def test_no_access_password(self):
         with self.assertRaises(AttributeError):
@@ -25,11 +24,11 @@ class UserModelTest(unittest.TestCase):
 
 
     def test_password_verification(self):
-        self.assertTrue(self.new_user.verify_password('potatopeel420'))
+        self.assertTrue(self.new_user.verify_password('Amos'))
 
 
 
     def tearDown(self):
-        user = User.query.filter_by(username="cjjhvghxdf").first()
+        user = User.query.filter_by(username="Pogba").first()
         if user:
             print("found")

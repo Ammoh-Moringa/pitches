@@ -1,5 +1,5 @@
 import unittest
-from app.models import Comment
+from app.models import Comments
 
 
 class CommentModelTest(unittest.TestCase):
@@ -11,16 +11,16 @@ class CommentModelTest(unittest.TestCase):
         """
         Set up method that will run before every Test
         """
-        self.comment= Comment(comment_content = 'testing testing')
+        self.comment= Comments(opinion = 'testing testing')
 
 
     def tearDown(self):
-        Comment.query.delete()
+        Comments.query.delete()
 
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.comment, Comment))
+        self.assertTrue(isinstance(self.comment, Comments))
 
 
     def test_check_instance_variables(self):
-        self.assertEquals(self.comment.comment_content,'testing testing')
+        self.assertEquals(self.comment.opinion,'testing testing')
