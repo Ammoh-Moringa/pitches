@@ -35,4 +35,4 @@ In your terminal, run the following commands;
 ### Live Site
 View [live](https://pitches8.herokuapp.com/)
 ### Licence
-This project is under the  [MIT](LICENSE) licence.
+This project is under the  [MIT](license) licence.
