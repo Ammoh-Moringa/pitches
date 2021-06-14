@@ -3,7 +3,7 @@
 ## AMOS KIPROTICH
 
 ## Description
-This is a pitch application or website that allows a user to view pitches in any category shown. Also, a user can comment on a pitch in any category and vote in any catecory for the pitch a user likes and a user can also create a pitch for any category they want to create in.
+This is a pitch application or website that allows a user to view pitches in any category shown. Also, a user can comment on a pitch in any category and vote in any category for the pitch a user likes and a user can also create a pitch for any category they want to create in.
 
 ## Prerequisites
 You need the following to start working on this project: On your local systems;
