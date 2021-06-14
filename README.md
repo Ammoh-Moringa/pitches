@@ -16,7 +16,7 @@ You need the following to start working on this project: On your local systems;
 
 ## Project SetUp
 
-1. Git clone  https://github.com/Chebichii-Lab/pitches.git
+1. Git clone  https://github.com/Ammoh-Moringa/pitches.git
 2. Naviagate to the folder using terminal.
 3. Run The files
 
@@ -32,5 +32,7 @@ In your terminal, run the following commands;
 3. Bootstrap
 4. Flask
 
-# Live Site 
-View   https://pichesgeorgia01.herokuapp.com/
+### Live Site
+View [live](https://pitches8.herokuapp.com/)
+### Licence
+This project is under the  [MIT](LICENSE) licence.
